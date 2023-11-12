@@ -1,19 +1,25 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recomendaciones de Animes</title>
-    <style>
-        /* Estilos CSS para darle un aspecto básico a la interfaz */
-        /* Puedes personalizarlos según tus preferencias */
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Sistema de Recomendación de Animes</h1>
-    <p>Ingresa el nombre de un anime para recibir recomendaciones similares:</p>
-    <input type="text" id="animeInput" placeholder="Ingrese un anime...">
-    <button onclick="getRecommendations()">Obtener Recomendaciones</button>
-    <div id="recommendations"></div>
+    <img src="./img/logo.png" alt="recomendacion" class="logo-img"/>
+    <div class="backgrounds"></div>
+    
+    <div class="options">
+        <ul id="Menu">
+        <a class="get_recomendation"  target="_blank">
+            <p>Ingresa el nombre de un anime para recibir recomendaciones similares:</p>
+            <input type="text" id="animeInput" placeholder="Ingrese un anime...">
+            <button onclick="getRecommendations()">Obtener Recomendaciones</button>
+            <div id="recommendations"></div>
+        </a>       
+        </ul>
+    </div>
 
     <script>
         function getRecommendations() {

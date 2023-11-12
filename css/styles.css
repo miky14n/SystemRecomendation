@@ -1,0 +1,48 @@
+body{
+    height: 100%;
+    margin: 0;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+  }
+  .backgrounds{
+    background: url("../img/background1.png")  ;
+    background-repeat: no-repeat;
+    background-attachment: local;  
+    /*background-size: 100% auto;*/
+    background-position: center;
+    background-size: cover;
+    height: 100%; 
+    opacity: 0.1;
+  }
+  .logo-img {
+    width: min(50vw, 300px);
+    padding: 40px;
+    position: absolute;
+    padding: 3px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+  }
+  
+  button{
+    background-color: #da9e1e;
+    color: #fdfdfd;
+    padding: 16px 30px;
+    border: 1px solid   #030303;
+    width: 200px;
+    display: block;
+    margin: 10px 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .get_recomendation{
+    position: absolute;
+    text-decoration:none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
