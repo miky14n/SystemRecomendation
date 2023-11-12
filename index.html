@@ -30,10 +30,17 @@
             })
             .then(response => response.json())
             .then(data => {
-                const recommendations = data.recommendations; // Obtener la lista de recomendaciones
-                const recommendationsList = recommendations.join('<br>'); // Crear una lista de animes separados por salto de línea
-
-                document.getElementById('recommendations').innerHTML = recommendationsList; // Mostrar las recomendaciones en el div
+                const recommendations = data.recommendations; 
+                const recommendationsContainer = document.createElement('div');
+                recommendationsContainer.classList.add('recommendations-container');
+                recommendations.forEach(anime => {
+                    const animeElement = document.createElement('p');
+                    animeElement.textContent = anime;
+                    recommendationsContainer.appendChild(animeElement);
+                });
+                const recommendationsDiv = document.getElementById('recommendations');
+                recommendationsDiv.innerHTML = '';
+                recommendationsDiv.appendChild(recommendationsContainer);
             })
             .catch(error => console.error('Error:', error));
         }
