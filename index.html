@@ -8,42 +8,71 @@
 </head>
 <body>
     <img src="./img/logo.png" alt="recomendacion" class="logo-img"/>
-    <div class="backgrounds"></div>
     
-    <div class="options">
-        <ul id="Menu">
-        <a class="get_recomendation"  target="_blank">
-            <p>Ingresa el nombre de un anime para recibir recomendaciones similares:</p>
-            <input type="text" id="animeInput" placeholder="Ingrese un anime...">
-            <button onclick="getRecommendations()">Obtener Recomendaciones</button>
-            <div id="recommendations"></div>
-        </a>       
-        </ul>
-    </div>
+    
+    
+    <div class="recomendation"  >
+        <p>Ingresa el nombre de un anime para recibir recomendaciones similares:</p>
+        <input type="text" id="animeInput" placeholder="Ingrese un anime...">
+        <button onclick="getRecommendations()">Obtener Recomendaciones</button>
+        <div class="recommendations", id="recommendations"></div>
+        
+    </div> 
+     
+
 
     <script>
-        function getRecommendations() {
+        async function getimg(name) {
+            try {
+                console.log(name)
+                const response = await fetch('https://api.jikan.moe/v4/anime?q=' + name)
+                const data_response = await response.json()
+                const imageUrls = data_response.data[0].images.jpg.image_url
+                console.log(imageUrls)
+
+                return imageUrls
+            } catch (error) {
+                console.error('Error:', error)
+                throw error
+            }
+        }
+
+        async function getRecommendations() {
             var animeName = document.getElementById('animeInput').value;
 
-            fetch('http://127.0.0.1:5000/get_recommendations?anime_name=' + animeName, {
-                method: 'GET'
-            })
-            .then(response => response.json())
-            .then(data => {
-                const recommendations = data.recommendations; 
-                const recommendationsContainer = document.createElement('div');
-                recommendationsContainer.classList.add('recommendations-container');
-                recommendations.forEach(anime => {
-                    const animeElement = document.createElement('p');
-                    animeElement.textContent = anime;
-                    recommendationsContainer.appendChild(animeElement);
+            try {
+                const response = await fetch('http://127.0.0.1:5000/get_recommendations?anime_name=' + animeName, {
+                    method: 'GET'
                 });
-                const recommendationsDiv = document.getElementById('recommendations');
-                recommendationsDiv.innerHTML = '';
-                recommendationsDiv.appendChild(recommendationsContainer);
-            })
-            .catch(error => console.error('Error:', error));
+                const data = await response.json();
+
+                const recommendations = data.recommendations; 
+                /*const recommendationsContainer = document.createElement('div');
+                recommendationsContainer.classList.add('recommendations_container')*/
+                const recommendationsDiv = document.getElementById('recommendations')
+                recommendationsDiv.innerHTML = ''
+                for (let i = 0; i < recommendations.length; i++) {
+                    const itemContainer = document.createElement('div')
+                    itemContainer.classList.add('recommendation_item')
+                    const imageUrl = await getimg(recommendations[i])
+                    const imgElement = document.createElement('img')
+                    imgElement.src = imageUrl
+                    imgElement.alt = recommendations[i]
+                    itemContainer.appendChild(imgElement)
+                    await new Promise(resolve => setTimeout(resolve, 200))
+                    const animeElement = document.createElement('p')
+                    animeElement.textContent = recommendations[i]
+                    itemContainer.appendChild(animeElement)
+                    recommendationsDiv.appendChild(itemContainer)
+                }
+                //recommendationsDiv.appendChild(recommendationsContainer)
+            } catch (error) {
+                console.error('Error:', error)
+            }
         }
+
+
+
     </script>
 </body>
 </html>

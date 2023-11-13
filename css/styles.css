@@ -1,18 +1,18 @@
 body{
-    height: 100%;
-    margin: 0;
-    font-family: 'Fira Sans Extra Condensed', sans-serif;
-  }
-  .backgrounds{
-    background: url("../img/background1.png")  ;
-    background-repeat: no-repeat;
-    background-attachment: local;  
-    /*background-size: 100% auto;*/
-    background-position: center;
-    background-size: cover;
-    height: 100%; 
-    opacity: 0.1;
-  }
+  height: 100%;
+  margin: 0;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+.backgrounds{
+  background: url("../img/background1.png")  ;
+  background-repeat: no-repeat;
+  background-attachment: local;  
+  /*background-size: 100% auto;*/
+  background-position: center;
+  background-size: cover;
+  height: 100%; 
+  opacity: 0.1;
+}
   .logo-img {
     width: min(50vw, 300px);
     padding: 40px;
@@ -24,30 +24,45 @@ body{
     border-radius: 8px;
   }
   
-  button{
-    background-color: #da9e1e;
-    color: #fdfdfd;
-    padding: 16px 30px;
-    border: 1px solid   #030303;
-    width: 200px;
+  .recomendation {
     display: block;
-    margin: 10px 4px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  .get_recomendation{
-    position: absolute;
-    text-decoration:none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+  
+  .recomendation p {
+    font-size: 16px;
+    margin-bottom: 10px;
   }
-  .recommendations-container {
-    border: 1px solid #ccc;
+  .recommendations{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #animeInput {
     padding: 10px;
-    margin-top: 10px;
-}
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #recommendations {
+    margin-top: 20px;
+  }
+  
